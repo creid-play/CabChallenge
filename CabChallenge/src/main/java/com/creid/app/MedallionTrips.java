@@ -121,9 +121,9 @@ public class MedallionTrips {
         int totalTrips = 0;
 
         String myDriver = "com.mysql.jdbc.Driver";
-        String myUrl = "jdbc:mysql://localhost:3306/ny_cab_data?useTimeZone=true&serverTimezone=UTC&autoReconnect=true&useSSL=false";
+        String myUrl = "jdbc:mysql://nycabdatabase.cb2qc0fmmznp.us-east-2.rds.amazonaws.com:3306/ny_cab_data?useSSL=false";
         Class.forName(myDriver);
-        Connection conn = DriverManager.getConnection(myUrl, "creid", "mysqladmin");
+        Connection conn = DriverManager.getConnection(myUrl, "admin", "mysqladmin");
 
         for (String medallion : medallionsArr) {
             Statement st = conn.createStatement();

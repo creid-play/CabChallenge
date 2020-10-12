@@ -5,7 +5,9 @@ import org.apache.commons.cli.*;
 import java.io.BufferedReader;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
 
 import org.apache.http.HttpResponse;
 
@@ -31,6 +33,9 @@ public class Main {
 
         Option clearCache = new Option("cc", "clearCache ", false, "clear cache");
         options.addOption(clearCache);
+
+        Option help = new Option("h", "help ", false, "show cli usage");
+        options.addOption(help);
 
         try {
             CommandLineParser parser = new DefaultParser();
@@ -58,6 +63,11 @@ public class Main {
             } else if (cmd.hasOption("cc")) {
                 //Send clearcache operation
                 System.out.println(operationBuilder.sendClearCacheRequest());
+            } else if (cmd.hasOption("h")) {
+                printUsageInstructions();
+            } else {
+                System.out.println("Unrecognized command. See CLI usage below:");
+                printUsageInstructions();
             }
 
         } catch (ParseException e) {
@@ -68,7 +78,6 @@ public class Main {
             System.exit(1);
         }
 
-        System.out.println("Done");
     }
 
     static void outputResponse(HttpResponse response) throws IOException {
@@ -77,5 +86,17 @@ public class Main {
         while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
+    }
+
+    static void printUsageInstructions() throws IOException {
+        InputStream in = Main.class.getClassLoader().getResourceAsStream("help.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        String line = reader.readLine();
+        while(line != null)
+        {
+            System.out.println(line);
+            line = reader.readLine();
+        }
+        in.close();
     }
 }

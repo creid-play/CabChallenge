@@ -10,7 +10,8 @@ import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
 
 public class OperationBuilder {
-    private static final String BASE_URL = "http://localhost:8080/CabChallenge-1.0-SNAPSHOT/";
+    private static final String BASE_URL = "http://Cabchallenge-env.eba-d2xicuvi.us-east-2.elasticbeanstalk.com/";
+
 
     public OperationBuilder() {
 

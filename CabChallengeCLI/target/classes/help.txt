@@ -1,0 +1,17 @@
+CabChallengeCLI usage
+
+Execute the CabChallengeCLI.jar with the following options:
+
+-m  --medallions    - [Required]    list of medallions to query, separated by commas.   Eg: medallion1,medallion2,medallion3
+-d  --date          - [Required]    pickup date in yyyy-MM-dd format.                   Eg: 2013-12-30
+-ic --ignoreCache   - [Optional]    flag used to force the API to ignore cached data.
+
+OR
+
+-cc --clearCache    - [Required]    Clears the current contents of the cache.
+
+Examples:
+java -jar CabChallengeCLI.jar -m medallion1,medallion2,medallion3 -d 2013-12-30
+java -jar CabChallengeCLI.jar -m medallion1,medallion2,medallion3 -d 2013-12-30 -ic
+java -jar CabChallengeCLI.jar -m medallion1 -d 2013-12-30
+java -jar CabChallengeCLI.jar -cc
